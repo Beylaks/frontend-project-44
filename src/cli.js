@@ -1,4 +1,7 @@
 import readlineSync from "readline-sync";
 
-const youreName = readlineSync.question("Как тебя зовут?: ");
-export default youreName;
+const greating = () => {
+  const userName = readlineSync.question("Как тебя зовут?: ");
+  return userName;
+};
+export default greating;
