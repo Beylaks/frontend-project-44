@@ -16,9 +16,9 @@ const askPrime = () => {
   const answer = readlineSync.question(`Вопрос: ${num}
 Ответ: `);
   let conditeon;
-  if (answer === 'Да' && isPrime(num) === true) {
+  if (answer === 'Yes' && isPrime(num) === true) {
     conditeon = true;
-  } else if (answer === 'Нет' && isPrime(num) === false) {
+  } else if (answer === 'No' && isPrime(num) === false) {
     conditeon = true;
   } else {
     conditeon = false;
@@ -27,7 +27,7 @@ const askPrime = () => {
 };
 
 const brainPrime = () => {
-  const yourName = hello('Ответ "Да" если число простое "Нет" если нет');
+  const yourName = hello('Ответ "Да" если число простое "Yes" если No');
   for (let i = 0; i <= 2; i += 1) {
     const action = askPrime();
     if (action === true) {
