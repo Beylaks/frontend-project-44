@@ -16,7 +16,7 @@ const cutArr = (arr) => {
   const arrToCut = arr;
   const hidenNum = arr[arrNum];
   arrToCut[arrNum] = '..';
-  const arrStr = arr.join();
+  const arrStr = arr.join(' ');
   const check = task(arrStr);
   const condition = compare(hidenNum, Number(check));
   return condition;
