@@ -12,7 +12,7 @@ const createProgression = () => {
 };
 
 const cutArr = (arr) => {
-  const arrNum = getRandom(1, 10);
+  const arrNum = getRandom(0, 9);
   const arrToCut = arr;
   const hidenNum = arr[arrNum];
   arrToCut[arrNum] = '..';
