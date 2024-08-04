@@ -8,8 +8,10 @@ const greating = () => {
 const hello = (nameOfTheGame) => {
   console.log('Welcome to the Brain Games!');
   const userName = greating();
-  console.log(`Hello, ${userName}`);
-  console.log(nameOfTheGame);
+  console.log(`Hello, ${userName} !`);
+  if (nameOfTheGame !== '') {
+    console.log(nameOfTheGame);
+  }
   return userName;
 };
 
