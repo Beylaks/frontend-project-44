@@ -24,7 +24,7 @@ const repTasks = () => {
   const intro = hello('What is the result of the expression?');
   for (let i = 0; i < 3; i += 1) {
     if (!randomMath(getRandom(1, 100), getRandom(1, 100))) {
-      console.log(`Let's try again, ${intro}`);
+      console.log(`Let's try again, ${intro}!`);
       break;
     }
     if (i === 2) {
