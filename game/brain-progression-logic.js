@@ -26,7 +26,7 @@ const brainProgression = () => {
   const intro = hello('What number is missing in the progression?');
   for (let i = 0; i <= 2; i += 1) {
     if (!cutArr(createProgression())) {
-      console.log(`Let's try again, ${intro}`);
+      console.log(`Let's try again, ${intro}!`);
       break;
     }
     if (i === 2) {

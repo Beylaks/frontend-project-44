@@ -25,7 +25,7 @@ const brainPrime = () => {
   const intro = hello('Answer "yes" if given number is prime. Otherwise answer "no".');
   for (let i = 0; i <= 2; i += 1) {
     if (!askPrime()) {
-      console.log(`Let's try again, ${intro}`);
+      console.log(`Let's try again, ${intro}!`);
       break;
     }
     if (i === 2) {

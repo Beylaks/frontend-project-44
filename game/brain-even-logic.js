@@ -15,7 +15,7 @@ const isEven = () => {
   const intro = hello('Answer "yes" if the number is even, otherwise answer "no"');
   for (let i = 0; i < 3; i += 1) {
     if (!chekEven(getRandom(1, 100))) {
-      console.log(`Let's try again, ${intro}`);
+      console.log(`Let's try again, ${intro}!`);
       break;
     }
     if (i === 2) {
