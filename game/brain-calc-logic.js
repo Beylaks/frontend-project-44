@@ -28,7 +28,7 @@ const repTasks = () => {
       break;
     }
     if (i === 2) {
-      console.log(`Congratulations, ${intro} !`);
+      console.log(`Congratulations, ${intro}!`);
     }
   }
 };
