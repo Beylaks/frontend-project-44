@@ -1,13 +1,15 @@
 const getRandom = (min, max) => Math.round(min - 0.5 + Math.random() * (max - min + 1));
 
 const compare = (answer, task) => {
-  let b;
-  if (answer - task === 0) {
-    b = true;
+  let i;
+  if (answer === task) {
+    i = true;
+    console.log('Correct!');
   } else {
-    b = false;
+    i = false;
+    console.log(`${task} is wrong answer ;(. Correct answer was ${answer}.`);
   }
-  return b;
+  return i;
 };
 
 export { getRandom, compare };

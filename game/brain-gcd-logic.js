@@ -1,6 +1,5 @@
-import readlineSync from 'readline-sync';
 import { getRandom, compare } from '../src/general-logic.js';
-import { hello } from '../src/cli.js';
+import { hello, task } from '../src/cli.js';
 
 const findSameArr = (arr1, arr2) => {
   const result = [];
@@ -32,33 +31,22 @@ const gcd = (a, b) => {
   return result;
 };
 
-const askGcd = (a, b) => {
-  const quation = readlineSync.question(`Найди общий делитель ${a.toString()} ${b.toString()} : `);
-  return quation;
-};
-
 const compareGcd = (a, b) => {
   const result = gcd(a, b);
-  const answer = askGcd(a, b);
-  if (compare(answer, result)) {
-    console.log(`Молодец! Ответ ${result}`);
-  } else {
-    return false;
-  }
-  return true;
+  const answer = Number(task(`${a} ${b}`));
+  const conditeon = compare(result, answer);
+  return conditeon;
 };
 
 const brainGcd = () => {
-  const intro = hello('Найди наибольший общий делитель');
+  const intro = hello('Find the greatest common divisor of given numbers.');
   for (let i = 0; i < 3; i += 1) {
-    const firstNum = getRandom(1, 100);
-    const secondNum = getRandom(1, 100);
-    if (compareGcd(firstNum, secondNum) !== true) {
-      console.log(`Неверно, ответ: ${gcd(firstNum, secondNum)}`);
+    if (!compareGcd(getRandom(1, 100), getRandom(1, 100))) {
+      console.log(`Let's try again, ${intro}`);
       break;
     }
     if (i === 2) {
-      console.log(`Молодец, ты справился ${intro} !`);
+      console.log(`Congratulations, ${intro} !`);
     }
   }
 };

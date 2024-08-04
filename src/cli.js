@@ -1,16 +1,22 @@
 import readlineSync from 'readline-sync';
 
 const greating = () => {
-  const userName = readlineSync.question('Как вас зовут?: ');
+  const userName = readlineSync.question('May I have your name? ');
   return userName;
 };
 
 const hello = (nameOfTheGame) => {
   console.log('Welcome to the Brain Games!');
   const userName = greating();
-  console.log(`Привет, ${userName}`);
+  console.log(`Hello, ${userName}`);
   console.log(nameOfTheGame);
   return userName;
 };
 
-export { greating, hello };
+const task = (question) => {
+  const sum = readlineSync.question(`Question: ${question} 
+Your answer: `);
+  return sum;
+};
+
+export { greating, hello, task };

@@ -1,27 +1,27 @@
-import readlineSync from 'readline-sync';
-import userName from '../bin/brain-games.js';
+import { compare, getRandom } from '../src/general-logic.js';
+import { hello, task } from '../src/cli.js';
 
-const getRandom = (min, max) => (Math.round(min - 0.5 + Math.random() * (max - min + 1))
-);
+const chekEven = (num) => {
+  const ask = task(num);
+  let answer = 'yes';
+  if (num % 2 !== 0) {
+    answer = 'no';
+  }
+  const conditeon = compare(ask, answer);
+  return conditeon;
+};
 
 const isEven = () => {
+  const intro = hello('Answer "yes" if the number is even, otherwise answer "no"');
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandom(1, 100);
-    const answer = readlineSync.question(`Чётное или нет: ${randomNumber} `);
-    if (randomNumber % 2 === 0 && answer === 'да') {
-      console.log('Правильно!');
-      if (i === 2) {
-        console.log(`Поздравляю ${userName}, вы гений!`);
-      }
-    } else if (randomNumber % 2 === 1 && answer === 'нет') {
-      console.log('Правильно!');
-      if (i === 2) {
-        console.log(`Поздравляю ${userName}, вы гений!`);
-      }
-    } else {
-      console.log(`давай попробуем ещё раз ${userName}`);
+    if (!chekEven(getRandom(1, 100))) {
+      console.log(`Let's try again, ${intro}`);
       break;
+    }
+    if (i === 2) {
+      console.log(`Congratulations, ${intro} !`);
     }
   }
 };
+
 export default isEven;

@@ -1,6 +1,5 @@
-import readlineSync from 'readline-sync';
 import { compare, getRandom } from '../src/general-logic.js';
-import { hello } from '../src/cli.js';
+import { hello, task } from '../src/cli.js';
 
 const createProgression = () => {
   const a = getRandom(1, 10);
@@ -18,29 +17,20 @@ const cutArr = (arr) => {
   const hidenNum = arr[arrNum];
   arrToCut[arrNum] = '..';
   const arrStr = arr.join();
-  let condition;
-  const answer = readlineSync.question(`Вопрос: ${arrStr} 
-Ответ: `);
-  if (compare(hidenNum, answer)) {
-    condition = true;
-  } else {
-    condition = false;
-  }
+  const check = task(arrStr);
+  const condition = compare(hidenNum, Number(check));
   return condition;
 };
 
 const brainProgression = () => {
-  const yourName = hello('Найди пропущенное число');
+  const intro = hello('What number is missing in the progression?');
   for (let i = 0; i <= 2; i += 1) {
-    const action = cutArr(createProgression());
-    if (action === true) {
-      console.log('Верно');
-    } else {
-      console.log(`Неверно ${yourName}`);
+    if (!cutArr(createProgression())) {
+      console.log(`Let's try again, ${intro}`);
       break;
     }
     if (i === 2) {
-      console.log(`Молодец, ${yourName}`);
+      console.log(`Congratulations, ${intro} !`);
     }
   }
 };
