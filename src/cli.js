@@ -4,7 +4,7 @@ const greating = () => {
   const userName = readlineSync.question('May I have your name? ');
   return userName;
 };
-
+// Приветствие перед каждой игрой
 const hello = (nameOfTheGame) => {
   console.log('Welcome to the Brain Games!');
   const userName = greating();
@@ -14,7 +14,7 @@ const hello = (nameOfTheGame) => {
   }
   return userName;
 };
-
+// Хранит в себе ответ для сравнения результатов
 const task = (question) => {
   const sum = readlineSync.question(`Question: ${question} 
 Your answer: `);

@@ -1,5 +1,5 @@
-import { compare, getRandom } from '../src/general-logic.js';
-import { hello, task } from '../src/cli.js';
+import { compare, cycle, getRandom } from '../src/general-logic.js';
+import { task } from '../src/cli.js';
 
 const createProgression = () => {
   const a = getRandom(1, 10);
@@ -11,7 +11,8 @@ const createProgression = () => {
   return progressionArr;
 };
 
-const cutArr = (arr) => {
+const cutArr = () => {
+  const arr = createProgression();
   const arrNum = getRandom(0, 9);
   const arrToCut = arr;
   const hidenNum = arr[arrNum];
@@ -22,17 +23,6 @@ const cutArr = (arr) => {
   return condition;
 };
 
-const brainProgression = () => {
-  const intro = hello('What number is missing in the progression?');
-  for (let i = 0; i <= 2; i += 1) {
-    if (!cutArr(createProgression())) {
-      console.log(`Let's try again, ${intro}!`);
-      break;
-    }
-    if (i === 2) {
-      console.log(`Congratulations, ${intro}!`);
-    }
-  }
-};
+const progressionCycle = () => cycle(cutArr, 'What number is missing in the progression?');
 
-export default brainProgression;
+export default progressionCycle;

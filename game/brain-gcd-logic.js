@@ -1,5 +1,5 @@
-import { getRandom, compare } from '../src/general-logic.js';
-import { hello, task } from '../src/cli.js';
+import { getRandom, compare, cycle } from '../src/general-logic.js';
+import { task } from '../src/cli.js';
 
 const findSameArr = (arr1, arr2) => {
   const result = [];
@@ -31,24 +31,15 @@ const gcd = (a, b) => {
   return result;
 };
 
-const compareGcd = (a, b) => {
+const compareGcd = () => {
+  const a = getRandom(1, 100);
+  const b = getRandom(1, 100);
   const result = gcd(a, b);
   const answer = Number(task(`${a} ${b}`));
   const conditeon = compare(result, answer);
   return conditeon;
 };
 
-const brainGcd = () => {
-  const intro = hello('Find the greatest common divisor of given numbers.');
-  for (let i = 0; i < 3; i += 1) {
-    if (!compareGcd(getRandom(1, 100), getRandom(1, 100))) {
-      console.log(`Let's try again, ${intro}!`);
-      break;
-    }
-    if (i === 2) {
-      console.log(`Congratulations, ${intro}!`);
-    }
-  }
-};
+const gcdCycle = () => cycle(compareGcd, 'Find the greatest common divisor of given numbers.');
 
-export default brainGcd;
+export default gcdCycle;

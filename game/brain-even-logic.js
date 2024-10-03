@@ -1,7 +1,8 @@
-import { compare, getRandom } from '../src/general-logic.js';
-import { hello, task } from '../src/cli.js';
+import { compare, getRandom, cycle } from '../src/general-logic.js';
+import { task } from '../src/cli.js';
 
-const chekEven = (num) => {
+const chekEven = () => {
+  const num = getRandom(1, 100);
   const ask = task(num);
   let answer = 'yes';
   if (num % 2 !== 0) {
@@ -11,17 +12,6 @@ const chekEven = (num) => {
   return conditeon;
 };
 
-const isEven = () => {
-  const intro = hello('Answer "yes" if the number is even, otherwise answer "no"');
-  for (let i = 0; i < 3; i += 1) {
-    if (!chekEven(getRandom(1, 100))) {
-      console.log(`Let's try again, ${intro}!`);
-      break;
-    }
-    if (i === 2) {
-      console.log(`Congratulations, ${intro}!`);
-    }
-  }
-};
+const isEvenCycle = () => cycle(chekEven, 'Answer "yes" if the number is even, otherwise answer "no"');
 
-export default isEven;
+export default isEvenCycle;

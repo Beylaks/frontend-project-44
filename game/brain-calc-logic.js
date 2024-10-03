@@ -1,36 +1,26 @@
-import { getRandom, compare } from '../src/general-logic.js';
-import { hello, task } from '../src/cli.js';
+import { getRandom, compare, cycle } from '../src/general-logic.js';
+import { task } from '../src/cli.js';
 
-const randomMath = (a, b) => {
-  let conditeon = false;
-  const singNumber = getRandom(1, 3);
-  if (singNumber === 1) {
-    const result = a + b;
-    const sum = task(`${a} + ${b}`);
-    conditeon = compare(result, Number(sum));
-  } else if (singNumber === 2) {
-    const result = a - b;
-    const sum = task(`${a} - ${b}`);
-    conditeon = compare(result, Number(sum));
-  } else if (singNumber === 3) {
-    const result = a * b;
-    const sum = task(`${a} * ${b}`);
-    conditeon = compare(result, Number(sum));
-  }
-  return conditeon;
+const math = [{
+  sign: '+',
+  method: (n1, n2) => n1 + n2,
+}, {
+  sign: '-',
+  method: (n1, n2) => n1 - n2,
+}, {
+  sign: '*',
+  method: (n1, n2) => n1 * n2,
+}];
+
+const randomMath = () => {
+  const numberOne = getRandom(1, 10);
+  const numberTwo = getRandom(1, 10);
+  const sign = getRandom(0, 2);
+  const quastion = task(`${numberOne} ${math[sign].sign} ${numberTwo}`);
+  const answer = math[sign].method(numberOne, numberTwo);
+  return compare(answer, Number(quastion));
 };
 
-const repTasks = () => {
-  const intro = hello('What is the result of the expression?');
-  for (let i = 0; i < 3; i += 1) {
-    if (!randomMath(getRandom(1, 100), getRandom(1, 100))) {
-      console.log(`Let's try again, ${intro}!`);
-      break;
-    }
-    if (i === 2) {
-      console.log(`Congratulations, ${intro}!`);
-    }
-  }
-};
+const randomMathCycle = () => cycle(randomMath, 'What is the result of the expression?');
 
-export default repTasks;
+export default randomMathCycle;

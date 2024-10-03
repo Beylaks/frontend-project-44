@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import repTasks from '../game/brain-calc-logic.js';
+import randomMathCycle from '../game/brain-calc-logic.js';
 
-repTasks();
+randomMathCycle();
