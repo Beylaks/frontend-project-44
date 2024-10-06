@@ -2,6 +2,9 @@ import putGameInCycle from '../src/general-logic.js';
 import { getRandom } from '../src/utils.js';
 
 const isPrime = (num) => {
+  if (num === 1) {
+    return false;
+  }
   for (let i = 2; i < num; i += 1) {
     if (num % i === 0) {
       return false;
