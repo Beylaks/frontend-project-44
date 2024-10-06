@@ -1,23 +1,18 @@
-import { hello } from './cli.js';
-// Рандомайзер чисел
-const getRandom = (min, max) => Math.round(min - 0.5 + Math.random() * (max - min + 1));
-// Сравнивает ответы(если ответ число, не забываем добавить Number(task))
-const compare = (answer, task) => {
-  let i;
-  if (answer === task) {
-    i = true;
-    console.log('Correct!');
-  } else {
-    i = false;
-    console.log(`${task} is wrong answer ;(. Correct answer was ${answer}.`);
-  }
-  return i;
-};
+import { sayHello, askTask } from './cli.js';
+import { compare } from './utils.js';
+
 // Цикл для игры, кладём в файл с логикой или сломается!
-const cycle = (game, task) => {
-  const intro = hello(task);
+const putGameInCycle = (game, nameOfTask) => {
+  const intro = sayHello(nameOfTask);
   for (let i = 0; i < 3; i += 1) {
-    if (!game()) {
+    const quastionAndAnswer = game();
+    const trueAnswer = quastionAndAnswer[0];
+    const quastion = quastionAndAnswer[1];
+    let playerAnswer = askTask(quastion);
+    if (typeof trueAnswer !== typeof playerAnswer) {
+      playerAnswer = Number(playerAnswer);
+    }
+    if (!compare(trueAnswer, playerAnswer)) {
       console.log(`Let's try again, ${intro}!`);
       break;
     }
@@ -27,4 +22,4 @@ const cycle = (game, task) => {
   }
 };
 
-export { getRandom, compare, cycle };
+export default putGameInCycle;

@@ -5,7 +5,7 @@ const greating = () => {
   return userName;
 };
 // Приветствие перед каждой игрой
-const hello = (nameOfTheGame) => {
+const sayHello = (nameOfTheGame) => {
   console.log('Welcome to the Brain Games!');
   const userName = greating();
   console.log(`Hello, ${userName}!`);
@@ -15,10 +15,10 @@ const hello = (nameOfTheGame) => {
   return userName;
 };
 // Хранит в себе ответ для сравнения результатов
-const task = (question) => {
+const askTask = (question) => {
   const sum = readlineSync.question(`Question: ${question} 
 Your answer: `);
   return sum;
 };
 
-export { greating, hello, task };
+export { greating, sayHello, askTask };

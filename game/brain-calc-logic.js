@@ -1,7 +1,8 @@
-import { getRandom, compare, cycle } from '../src/general-logic.js';
-import { task } from '../src/cli.js';
+import putGameInCycle from '../src/general-logic.js';
+import { getRandom } from '../src/utils.js';
 
-const math = [{
+// Хранит в себе случайное выражение
+const randomMathSign = [{
   sign: '+',
   method: (n1, n2) => n1 + n2,
 }, {
@@ -12,15 +13,15 @@ const math = [{
   method: (n1, n2) => n1 * n2,
 }];
 
-const randomMath = () => {
+const getRandomMathTask = () => {
   const numberOne = getRandom(1, 10);
   const numberTwo = getRandom(1, 10);
   const sign = getRandom(0, 2);
-  const quastion = task(`${numberOne} ${math[sign].sign} ${numberTwo}`);
-  const answer = math[sign].method(numberOne, numberTwo);
-  return compare(answer, Number(quastion));
+  const quastion = `${numberOne} ${randomMathSign[sign].sign} ${numberTwo}`;
+  const trueAnswer = randomMathSign[sign].method(numberOne, numberTwo);
+  return [trueAnswer, quastion];
 };
 
-const randomMathCycle = () => cycle(randomMath, 'What is the result of the expression?');
+const startBrainCalcGame = () => putGameInCycle(getRandomMathTask, 'What is the result of the expression?');
 
-export default randomMathCycle;
+export default startBrainCalcGame;

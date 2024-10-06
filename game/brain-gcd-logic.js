@@ -1,7 +1,8 @@
-import { getRandom, compare, cycle } from '../src/general-logic.js';
-import { task } from '../src/cli.js';
+import putGameInCycle from '../src/general-logic.js';
+import { getRandom } from '../src/utils.js';
 
-const findSameArr = (arr1, arr2) => {
+// Нахоит пересечение в массиве делителей
+const findSameDividers = (arr1, arr2) => {
   const result = [];
   for (let i = 0; i < arr1.length; i += 1) {
     if (arr2.includes(arr1[i])) result.push(arr1[i]);
@@ -9,11 +10,13 @@ const findSameArr = (arr1, arr2) => {
   return result;
 };
 
-const findHighestArr = (arr) => {
+// Находит наибольший делитель из масива
+const findHighestDivider = (arr) => {
   const lastSimbol = arr[arr.length - 1];
   return lastSimbol;
 };
 
+// Находит Делители для числа
 const findDividers = (num) => {
   const result = [];
   for (let i = 1; i <= num; i += 1) {
@@ -23,23 +26,24 @@ const findDividers = (num) => {
   }
   return result;
 };
-const gcd = (a, b) => {
-  const arr1 = findDividers(a);
-  const arr2 = findDividers(b);
-  const sameArrs = findSameArr(arr1, arr2);
-  const result = findHighestArr(sameArrs);
+
+// находит наибольший делитель для двух чисел
+const findSameHgiestDivide = (firstNum, secondNum) => {
+  const dividersOfFirstNum = findDividers(firstNum);
+  const dividersOfSecondNum = findDividers(secondNum);
+  const sameDivders = findSameDividers(dividersOfFirstNum, dividersOfSecondNum);
+  const result = findHighestDivider(sameDivders);
   return result;
 };
 
-const compareGcd = () => {
+const getGcdTask = () => {
   const a = getRandom(1, 100);
   const b = getRandom(1, 100);
-  const result = gcd(a, b);
-  const answer = Number(task(`${a} ${b}`));
-  const conditeon = compare(result, answer);
-  return conditeon;
+  const trueAnswer = findSameHgiestDivide(a, b);
+  const quastion = `${a} ${b}`;
+  return [trueAnswer, quastion];
 };
 
-const gcdCycle = () => cycle(compareGcd, 'Find the greatest common divisor of given numbers.');
+const startBrainGcdGame = () => putGameInCycle(getGcdTask, 'Find the greatest common divisor of given numbers.');
 
-export default gcdCycle;
+export default startBrainGcdGame;

@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import isPrimeCycle from '../game/brain-prime-logic.js';
+import startBrainPrimeGame from '../game/brain-prime-logic.js';
 
-isPrimeCycle();
+startBrainPrimeGame();

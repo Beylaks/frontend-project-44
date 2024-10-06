@@ -1,5 +1,5 @@
-import { getRandom, compare, cycle } from '../src/general-logic.js';
-import { task } from '../src/cli.js';
+import putGameInCycle from '../src/general-logic.js';
+import { getRandom } from '../src/utils.js';
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -10,17 +10,15 @@ const isPrime = (num) => {
   return true;
 };
 
-const askPrime = () => {
-  const num = getRandom(1, 100);
-  const check = task(num);
-  let answer = 'yes';
-  if (!isPrime(num)) {
-    answer = 'no';
+const getIsPrimeTask = () => {
+  const quastion = getRandom(1, 100);
+  let trueAnswer = 'yes';
+  if (!isPrime(quastion)) {
+    trueAnswer = 'no';
   }
-  const conditeon = compare(answer, check);
-  return conditeon;
+  return [trueAnswer, quastion];
 };
 
-const isPrimeCycle = () => cycle(askPrime, 'Answer "yes" if given number is prime. Otherwise answer "no".');
+const startBrainPrimeGame = () => putGameInCycle(getIsPrimeTask, 'Answer "yes" if given number is prime. Otherwise answer "no".');
 
-export default isPrimeCycle;
+export default startBrainPrimeGame;

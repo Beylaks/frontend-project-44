@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import isEvenCycle from '../game/brain-even-logic.js';
+import startBrainEvenGame from '../game/brain-even-logic.js';
 
-isEvenCycle();
+startBrainEvenGame();

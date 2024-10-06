@@ -1,17 +1,15 @@
-import { compare, getRandom, cycle } from '../src/general-logic.js';
-import { task } from '../src/cli.js';
+import { getRandom } from '../src/utils.js';
+import putGameInCycle from '../src/general-logic.js';
 
-const chekEven = () => {
-  const num = getRandom(1, 100);
-  const ask = task(num);
-  let answer = 'yes';
-  if (num % 2 !== 0) {
-    answer = 'no';
+const getRandomIsEvenTask = () => {
+  const numForQuastion = getRandom(1, 100);
+  let trueAnswer = 'yes';
+  if (numForQuastion % 2 !== 0) {
+    trueAnswer = 'no';
   }
-  const conditeon = compare(ask, answer);
-  return conditeon;
+  return [trueAnswer, numForQuastion];
 };
 
-const isEvenCycle = () => cycle(chekEven, 'Answer "yes" if the number is even, otherwise answer "no"');
+const startBrainEvenGame = () => putGameInCycle(getRandomIsEvenTask, 'Answer "yes" if the number is even, otherwise answer "no"');
 
-export default isEvenCycle;
+export default startBrainEvenGame;
