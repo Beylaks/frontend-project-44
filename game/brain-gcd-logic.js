@@ -37,10 +37,10 @@ const findSameHgiestDivide = (firstNum, secondNum) => {
 };
 
 const getGcdTask = () => {
-  const a = getRandom(1, 100);
-  const b = getRandom(1, 100);
-  const trueAnswer = findSameHgiestDivide(a, b);
-  const quastion = `${a} ${b}`;
+  const numberOne = getRandom(1, 100);
+  const numberTwo = getRandom(1, 100);
+  const trueAnswer = findSameHgiestDivide(numberOne, numberTwo);
+  const quastion = `${numberOne} ${numberTwo}`;
   return [trueAnswer, quastion];
 };
 
